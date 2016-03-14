@@ -47,18 +47,41 @@
     // var_dump($_POST['area_id']);
     // var_dump($_POST['gender']);
     // var_dump($_POST['age']);
+    // var_dump($_GET['friend_id']);
 
     //INSERT文作成
-    //$sql = "UPDATE `friends` SET `friend_name`= '小林慶亮',`area_id`= 1,`gender`= 1,`age`= 10  WHERE friend_id = 46"; //値の決め打ち
-    //%sと%dを使い分ける. 
-    $sql = sprintf("UPDATE `friends` SET `friend_name`= '%s',`area_id`= %d,`gender`= %d,`age`= %d  WHERE friend_id = '%s'", $_POST['name'], $_POST['area_id'], $_POST['gender'], $_POST['age'], $_GET['friend_id']);
+    // $sql = "UPDATE `friends` SET `friend_name`= '小林慶亮',`area_id`= 1,`gender`= 1,`age`= 10  WHERE friend_id = 46"; //値の決め打ち
+    // %sと"%s"の使い分け方法："%s"の場合は文字列、%sの場合はそれ以外。　絶対integer型だとわかっている場合は%dでもいい。　こんな感じ??
+    $sql = sprintf("UPDATE `friends` SET `friend_name`= '%s',`area_id`= %s,`gender`= %s,`age`= %s  WHERE friend_id = '%s'", 
+          $_POST['name'], 
+          $_POST['area_id'], 
+          $_POST['gender'], 
+          $_POST['age'], 
+          $_GET['friend_id']
+      );
 
     //SQL実行
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
-    var_dump($stmt);
+    //var_dump($stmt);
+
+    /* show.phpに遷移する
+      header()という遷移するための関数を使用する
+      使い方： header('Location: 遷移したいページのパス');
+      例：　header('Location: index.php');
+    */
+    //header('Location: show.php?area_id='.$area_id); // $area_id は編集した友達データのarea_idカラムに入っている値
+    header('Location: show.php?area_id='.$_POST['area_id']);
+
+    // この行以下のコードの処理を停止する
+    // exit('これ以下の処理を行わず終了します')
+    // 参考記事：http://liginc.co.jp/programmer/archives/1140
+    exit();
 
   }
+
+  //データベースから切断
+  $dbh = null;
 
 ?>
 
@@ -107,8 +130,10 @@
                 <select class="form-control" name="area_id">
                   <option value="0">出身地を選択</option>
                   <?php foreach ($areas as $area) { ?>
+                      <!-- ifで、プルダウンに自分の出身県を入れることができる -->
+                      <!-- elseで、プルダウンに自分以外の県を表示させる -->
                       <?php if ($area['area_id'] == $friend['area_id']) { ?>
-                      <option value="<?php echo $area['area_id']; ?>" selected><?php echo $area['area_name']; ?></option>
+                        <option value="<?php echo $area['area_id']; ?>" selected><?php echo $area['area_name']; ?></option>
                       <?php }else{ ?>
                         <option value="<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></option>
                       <?php } ?>
@@ -136,7 +161,7 @@
             </div>
           <input type="submit" class="btn btn-default" value="更新" onclick="index.php">
         </form>
-        <input type="submit" class="btn btn-default" Value="戻る" onClick="history.go(-1);">
+        <input type="submit" class="btn btn-default" Value="都道府県一覧に戻る" onClick="history.go(-1);">
       </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
