@@ -161,7 +161,7 @@
             </div>
           <input type="submit" class="btn btn-default" value="更新" onclick="index.php">
         </form>
-        <input type="submit" class="btn btn-default" Value="都道府県一覧に戻る" onClick="history.go(-1);">
+        <input type="submit" class="btn btn-default" Value="戻る" onClick="history.go(-1);">
       </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

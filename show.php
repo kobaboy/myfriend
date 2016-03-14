@@ -115,7 +115,10 @@
                <td>
                  <div class="text-center">
                    <a href="edit.php?friend_id=<?php echo $friend['friend_id']; ?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                   <a href="javascript:void(0);" onclick="destroy();"><i class="fa fa-trash"></i></a>
+                   <!-- <a href="javascript:void(0);" onclick="destroy();"><i class="fa fa-trash"></i></a> -->
+                   <a href="#" onclick="destroy(<?php echo $friend['friend_id']; ?>);"><i class="fa fa-trash"></i></a>
+                   <!-- aタグやbuttonタグなどユーザーが押せるタグにonClickを指定することでjavascriptのコードを発動することができる -->
+                   <!-- 今回はjavascript内で定義するdestroy関数にfriend_idを渡した上来で処理を実行する -->
                  </div>
                </td>
              </tr>
@@ -125,7 +128,8 @@
           </tbody>
         </table>
 
-        <input type="button" class="btn btn-default" value="新規作成" onClick="location.href='new.php'">
+        <input type="button" class="btn btn-default" value="新規作成" onClick="location.href='new.php'">  
+        <input type="button" class="btn btn-default" value="都道府県一覧画面に戻る" onClick="location.href='index.php'">
 
       </div>
     </div>
