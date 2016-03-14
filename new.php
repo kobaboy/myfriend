@@ -32,8 +32,18 @@
     //SQL実行
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
+
+
+    //更新ボタンを押したらindex.phpに画面遷移する
+    header('Location: index.php');
+
+    exit();
+
   }
 
+
+  //データベースから切断
+  $dbh = null;
   
     
 ?>
