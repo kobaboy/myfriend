@@ -156,47 +156,43 @@
         <legend><?php echo $area_name; ?>の友達</legend>
         <!-- <div class="well">男性：2名　女性：1名</div> -->
 
-        <div class="well">男性：<?php echo $male; ?>名　女性<?php echo $female; ?>名</div>
+        <div class="well">男性：<?php echo $male; ?>名　女性<?php echo $female; ?>名
+        <br>
           <!-- 男女の平均年齢を出力する -->
           <?php 
             
-            if($avgAge[0]['gender'] == 2){
-              // 女性のみバージョン
-              echo '男性平均: --歳';
-              echo '女性平均:', $avgAge[0]['avgAge'], '歳';
-              var_dump("ほげほげ");
-            }
-            else if(empty($avgAge[1]['gender'])){
-            //else if(empty($avgAge[1]['gender'])){
-              // 男性のみのバージョン
-              echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
+            if(empty($avgAge[0]['gender'])){
+              //男女の友達がいない場合
+              echo '男性平均: --歳　';
               echo '女性平均: --歳';
-              var_dump("ほげほげ2");
-
-            }else if(($avgAge[0]['gender'] == 1) && ($avgAge[1]['gender'] == 2)){
-              //男性と女性両方バージョン
+            }
+            else if(!empty($avgAge[0]['gender']) and !empty($avgAge[1]['gender'])){
+              //男女の友達がいる場合
               echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
               echo '女性平均:', $avgAge[1]['avgAge'], '歳';
-              var_dump("ほげほげ3");
-            } else {
-              echo '男性平均: --歳';
-              echo '女性平均: --歳';
-              // echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
-              // echo '女性平均:', $avgAge[1]['avgAge'], '歳';
             }
-
+            else if($avgAge[0]['gender'] == 2){
+              //女性友達のみの場合
+              echo '男性平均: --歳　';
+              echo '女性平均:', $avgAge[0]['avgAge'], '歳';
+            }
+            else{
+              //男性友達のみの場合
+              echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
+              echo '女性平均: --歳';
+            }
             
            ?>
-          <table class="table table-striped table-hover table-condensed">
-            <thead>
-              <tr>
-                <th><div class="text-center">名前</div></th>
-                <th><div class="text-center"></div>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 友達の名前を表示 -->
-
+        </div>
+        <table class="table table-striped table-hover table-condensed">
+          <thead>
+            <tr>
+              <th><div class="text-center">名前</div></th>
+              <th><div class="text-center"></div>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 友達の名前を表示 -->
              <?php foreach ($friends as $friend) { ?>
                <tr>
                  <td><div class="text-center"><?php echo $friend['friend_name']; ?></div></td>
@@ -211,9 +207,7 @@
                  </td>
                </tr>
              <?php } ?>
-              
-
-            </tbody>
+          </tbody>
           </table>
 
           <input type="button" class="btn btn-default" value="新規作成" onClick="location.href='new.php'">  
