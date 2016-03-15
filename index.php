@@ -65,35 +65,56 @@
     <![endif]-->
   </head>
   <body>
-  
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span class="strong-title"><i class="fa fa-facebook-square"></i> My friends</span></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 content-margin-top">
-      <legend>都道府県一覧</legend>
-        <table class="table table-striped table-bordered table-hover table-condensed">
-          <thead>
-            <tr>
-              <th><div class="text-center">id</div></th>
-              <th><div class="text-center">県名</div></th>
-              <th><div class="text-center">人数</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- id, 県名を表示 -->
-            <?php foreach ($areas as $area) { ?>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 content-margin-top">
+        <legend>都道府県一覧</legend>
+          <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
               <tr>
-              <td><div class="text-center"><?php echo $area['area_id']; ?></div></td>
-              <td><div class="text-center"><a href="show_answer.php?area_id=<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></a></div></td>
-              <td><div class="text-center"><?php echo $area['friends_cnt']; ?></div></td>
+                <th><div class="text-center">id</div></th>
+                <th><div class="text-center">県名</div></th>
+                <th><div class="text-center">人数</div></th>
               </tr>
-            <?php } ?> 
-            
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <!-- id, 県名を表示 -->
+              <?php foreach ($areas as $area) { ?>
+                <tr>
+                <td><div class="text-center"><?php echo $area['area_id']; ?></div></td>
+                <!-- <td><div class="text-center"><a href="show_answer.php?area_id=<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></a></div></td> -->
+                <td><div class="text-center"><a href="show.php?area_id=<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></a></div></td>
+                <td><div class="text-center"><?php echo $area['friends_cnt']; ?></div></td>
+                </tr>
+              <?php } ?> 
+              
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

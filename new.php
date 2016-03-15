@@ -35,7 +35,8 @@
 
 
     //更新ボタンを押したらindex.phpに画面遷移する
-    header('Location: index.php');
+    //header('Location: index.php');
+    header('Location: show.php?area_id='.$_POST['area_id']);
 
     exit();
 
