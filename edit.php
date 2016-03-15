@@ -110,6 +110,27 @@
     <![endif]-->
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span class="strong-title"><i class="fa fa-facebook-square"></i> My friends</span></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
   
   <div class="container">
     <div class="row">
@@ -147,8 +168,14 @@
               <div class="col-sm-10">
                 <select class="form-control" name="gender">
                   <option value="0">性別を選択</option>
-                  <option value="1" selected>男性</option>
-                  <option value="2">女性</option>
+                  <?php
+                  if($friend['gender'] == 1){ ?>
+                    <option value="1" selected>男性</option>
+                    <option value="2">女性</option>
+                  <?php }else{ ?>
+                    <option value="1">男性</option>
+                    <option value="2" selected>女性</option>
+                  <?php } ?>
                 </select>
               </div>
             </div>
@@ -156,7 +183,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">年齢</label>
               <div class="col-sm-10">
-                <input type="text" name="age" class="form-control" placeholder="例：27" value="27">
+                <input type="text" name="age" class="form-control" placeholder="例：27" value="<?php echo $friend['age'] ?>">
               </div>
             </div>
           <input type="submit" class="btn btn-default" value="更新" onclick="index.php">

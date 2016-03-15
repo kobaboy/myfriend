@@ -96,9 +96,9 @@
     $avgAge[] = $rec;
   }
 
-  echo '<pre>';
-  var_dump($avgAge);
-  echo '</pre>';
+  // echo '<pre>';
+  // var_dump($avgAge);
+  // echo '</pre>';
 
   //var_dump($friends);
   //var_dump($male);
