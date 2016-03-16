@@ -161,12 +161,12 @@
           <!-- 男女の平均年齢を出力する -->
           <?php 
             
-            if(empty($avgAge[0]['gender'])){
+            if(empty($avgAge[0]['gender'])){  //if(empty()){  これでもいける
               //男女の友達がいない場合
               echo '男性平均: --歳　';
               echo '女性平均: --歳';
             }
-            else if(!empty($avgAge[0]['gender']) and !empty($avgAge[1]['gender'])){
+            else if(!empty($avgAge[0]['gender']) and !empty($avgAge[1]['gender'])){  //else if(!empty($avgAge[1])){ 　これでもいける
               //男女の友達がいる場合
               echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
               echo '女性平均:', $avgAge[1]['avgAge'], '歳';
