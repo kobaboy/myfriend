@@ -73,7 +73,7 @@
     }
   }
 
-  //平均年令取得
+  //平均年齢取得
   // $sql = 'SELECT `gender`, TRUNCATE(AVG(`age`), 2) AS avgAge
   //         FROM `friends` WHERE `area_id` ='
   //         . $_GET['area_id'].
@@ -166,7 +166,7 @@
               echo '男性平均: --歳　';
               echo '女性平均: --歳';
             }
-            else if(!empty($avgAge[0]['gender']) and !empty($avgAge[1]['gender'])){  //else if(!empty($avgAge[1])){ 　これでもいける
+            else if(!empty($avgAge[0]['gender']) and !empty($avgAge[1]['gender'])){  //年齡else if(!empty($avgAge[1])){ 　これでもいける
               //男女の友達がいる場合
               echo '男性平均:', $avgAge[0]['avgAge'], '歳　';
               echo '女性平均:', $avgAge[1]['avgAge'], '歳';
